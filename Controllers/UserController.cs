@@ -36,7 +36,7 @@ namespace UserService.Controllers
             }
 
             return Ok(user);
-            
+            //Just adding it for the tesing.
 
         }
     }
