@@ -6,7 +6,7 @@ using UserService;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connection = builder.Configuration.GetConnectionString("LoginServicedb");
+var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
 
