@@ -1,5 +1,6 @@
 using System.Data;
 using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -15,6 +16,7 @@ namespace UserService.Controllers
 
         private readonly ILogger<UserController> _logger;
         private readonly MyDbContext _dbContext;
+  
 
 
         public UserController(ILogger<UserController> logger, MyDbContext myDbContext)
@@ -26,6 +28,7 @@ namespace UserService.Controllers
 
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult<User> GetUser(int id)
         {
             try
@@ -35,7 +38,7 @@ namespace UserService.Controllers
                 {
                     return NotFound();
                 }
-
+               // _logger.LogInformation("Hello, world!");
                 return Ok(user);
             }
             catch (Exception ex)
